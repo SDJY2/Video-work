@@ -4,6 +4,9 @@ import { useMemo, useState } from "react";
 
 type Category = "all" | "showcase" | "motion" | "demo";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const asset = (path: string) => `${basePath}${path}`;
+
 const works = [
   {
     title: "Future Travel Project Film",
@@ -12,7 +15,7 @@ const works = [
     category: "showcase" as const,
     player: "embed" as const,
     src: "https://drive.google.com/file/d/17EY9V7d2bV6H1K_TVs3rafzlkZN6NSaU/preview",
-    poster: "/projects/future-travel.webp",
+    poster: asset("/projects/future-travel.webp"),
     watchUrl: "https://drive.google.com/file/d/17EY9V7d2bV6H1K_TVs3rafzlkZN6NSaU/view?usp=sharing",
     orientation: "landscape" as const,
   },
@@ -22,9 +25,9 @@ const works = [
     tags: ["Vertical", "Rhythm", "Social"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/emoji-camera-challenge.mp4",
-    poster: "/editing/emoji-camera-challenge.webp",
-    watchUrl: "/editing/emoji-camera-challenge.mp4",
+    src: asset("/editing/emoji-camera-challenge.mp4"),
+    poster: asset("/editing/emoji-camera-challenge.webp"),
+    watchUrl: asset("/editing/emoji-camera-challenge.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -33,9 +36,9 @@ const works = [
     tags: ["Transformation", "Pacing", "Social"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/colour-mix-transformation-en.mp4",
-    poster: "/editing/colour-mix-transformation-en.webp",
-    watchUrl: "/editing/colour-mix-transformation-en.mp4",
+    src: asset("/editing/colour-mix-transformation-en.mp4"),
+    poster: asset("/editing/colour-mix-transformation-en.webp"),
+    watchUrl: asset("/editing/colour-mix-transformation-en.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -44,9 +47,9 @@ const works = [
     tags: ["Character edit", "Cut-outs", "Rhythm"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/cat-costume-lineup.mp4",
-    poster: "/editing/cat-costume-lineup.webp",
-    watchUrl: "/editing/cat-costume-lineup.mp4",
+    src: asset("/editing/cat-costume-lineup.mp4"),
+    poster: asset("/editing/cat-costume-lineup.webp"),
+    watchUrl: asset("/editing/cat-costume-lineup.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -55,9 +58,9 @@ const works = [
     tags: ["Compositing", "Music", "Character"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/winter-headphones.mp4",
-    poster: "/editing/winter-headphones.webp",
-    watchUrl: "/editing/winter-headphones.mp4",
+    src: asset("/editing/winter-headphones.mp4"),
+    poster: asset("/editing/winter-headphones.webp"),
+    watchUrl: asset("/editing/winter-headphones.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -66,9 +69,9 @@ const works = [
     tags: ["Seasonal", "Typography", "Vertical"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/lunar-new-year.mp4",
-    poster: "/editing/lunar-new-year.webp",
-    watchUrl: "/editing/lunar-new-year.mp4",
+    src: asset("/editing/lunar-new-year.mp4"),
+    poster: asset("/editing/lunar-new-year.webp"),
+    watchUrl: asset("/editing/lunar-new-year.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -77,9 +80,9 @@ const works = [
     tags: ["Graphic edit", "Comedy", "Timing"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/flight-character-cut.mp4",
-    poster: "/editing/flight-character-cut.webp",
-    watchUrl: "/editing/flight-character-cut.mp4",
+    src: asset("/editing/flight-character-cut.mp4"),
+    poster: asset("/editing/flight-character-cut.webp"),
+    watchUrl: asset("/editing/flight-character-cut.mp4"),
     orientation: "landscape" as const,
   },
   {
@@ -88,9 +91,9 @@ const works = [
     tags: ["Motion graphics", "Beat edit", "Montage"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/chunky-plumpy-duo.mp4",
-    poster: "/editing/chunky-plumpy-duo.webp",
-    watchUrl: "/editing/chunky-plumpy-duo.mp4",
+    src: asset("/editing/chunky-plumpy-duo.mp4"),
+    poster: asset("/editing/chunky-plumpy-duo.webp"),
+    watchUrl: asset("/editing/chunky-plumpy-duo.mp4"),
     orientation: "landscape" as const,
   },
   {
@@ -99,9 +102,9 @@ const works = [
     tags: ["Remix", "Motion graphics", "Energy"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/pigeon-pop.mp4",
-    poster: "/editing/pigeon-pop.webp",
-    watchUrl: "/editing/pigeon-pop.mp4",
+    src: asset("/editing/pigeon-pop.mp4"),
+    poster: asset("/editing/pigeon-pop.webp"),
+    watchUrl: asset("/editing/pigeon-pop.mp4"),
     orientation: "portrait" as const,
   },
   {
@@ -110,9 +113,9 @@ const works = [
     tags: ["Illustration", "Kinetic type", "Music edit"],
     category: "motion" as const,
     player: "local" as const,
-    src: "/editing/my-future-formula.mp4",
-    poster: "/editing/my-future-formula.webp",
-    watchUrl: "/editing/my-future-formula.mp4",
+    src: asset("/editing/my-future-formula.mp4"),
+    poster: asset("/editing/my-future-formula.webp"),
+    watchUrl: asset("/editing/my-future-formula.mp4"),
     orientation: "landscape" as const,
   },
   {
@@ -122,7 +125,7 @@ const works = [
     category: "demo" as const,
     player: "embed" as const,
     src: "https://www.youtube-nocookie.com/embed/D4blvxXWS-c?rel=0",
-    poster: "/projects/bake-cake.webp",
+    poster: asset("/projects/bake-cake.webp"),
     watchUrl: "https://youtu.be/D4blvxXWS-c",
     orientation: "landscape" as const,
   },
